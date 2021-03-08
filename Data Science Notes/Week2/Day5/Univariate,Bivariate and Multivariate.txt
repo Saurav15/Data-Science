@@ -1,0 +1,54 @@
+EDA 
+
+PART 1 ( Theory ): Univariate , Bivariate and Multivariate
+
+Data: 
+		Height	Weight	output
+		180		90		Obese
+		160		50		Slim
+		170		78		Fit
+		190		90		Fit
+		175		80		Slim
+		...		...		...
+		...		...		...
+
+
+
+1.) Univariate analysis : In Univariate analysis we take one Feature(column) and try to determine what can be the output based on that perticaular Feature(column).
+eg. Here in our data if we take a Weight Feature , then we can see that with the help of only weight feature we are able to identify the output.
+But in many certain cases it will not be able to identify this easily all the categories og the output because it is very likely possible that plotting this in a graph we will observe that the different categories are overlapping .
+eg. one person with weight 70KG is in Obese category while some other person with 70Kg will be in Fit categoy .
+So now we cannot get the output based on one Feature , we have to use some other feature together to get the correct classified Ooutput.
+In univariate analysis we take values on only one axis here only on x-axis and we leave the Y-axis empty i.e without any eature while plotting . 
+
+
+
+2.) Bivariate analysis : In Bivariate analysis we take Two features at a time to predict the correct output .
+In this examplw we will take both Height and weight into consideration and while plotting we will takw weight on X-axis and Height on Y-axis.
+Now what we get by plotting all the points in the Graph ?
+We can observe the graph and from the plotting of the graph we can see and determine which ML algo. to apply.
+eg. if the graph is clearly divided then we can use Linear Regression to differenciate out outputs . But if the points are Not clearly seperable or are overlapping so we can go for Non-Linear classifying algo's like Dicision trees , Random Forest etc. 
+
+But what if we have some more feature in our data like age,DOB etc ... at that time we cannot keep on adding features in our graph and make it 4D,5D !!! So what we do here is Multivariate analysis !
+
+
+
+3.) Multivariate Analysis : The Library that help us to do multivariate analysis is Seaborn .
+So how Multivariate analysis works ? 
+Suppose we have to include 3 features , so what we will do is we will make 6 graphs in one screen .
+e.g. on Y-axis we wil have 3 values and on x-axis we will also have 3 values i.e age , Height , Weight.
+and we will plot a different graphs 
+
+							age					Height 	  				Weight
+				age			age-age Graph		age-Height Graph		age-Weight Graph
+				
+				Height		Height-age Graph	Height-Height Graph		...
+				
+				weight		...					...						...
+				
+This is what we can say is correlation ! i.e by looking at the graph we can find out if one feature is increasing then is other feature is increasing or not . 
+
+
+
+
+So now Lets see Univariate , Bivariate and Multivariate with the help of an example . 

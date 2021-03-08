@@ -1,0 +1,86 @@
+Table of Contents:
+
+1.Introduction to Data Types.
+2.Categorical Data (Nominal, Ordinal).
+3.Numerical Data (Discrete, Continuous, Interval, Ratio).
+4.Why Data Types are important?
+5.Statistical Methods.
+
+You also need to know which data type you are dealing with to choose the right visualization method. Think of data types as a way to categorize different types of variables.
+
+
+Look at the image to see the map :
+
+1.) Categorical = data types which have different categories or we can also call them Qualitaive data
+
+		Categorical data consists of 2 data types : 
+		1) Norminal 
+		2) Ordinal 
+		
+		1) Norminal : Its just a data that just can be arranged in categories 
+					  eg. colours , occupation etc
+					  like we can have red , brown , green etc colours !
+					  
+		2) Ordinal  : Its the data which is same as Nominal data but just can be 
+					  ranked between categories !
+					  eg. School grades , army position etc.
+					  We have school grades like A,A++,B,C,D++ etc
+					  though this is a Qualitaive data but it has some order like: A++>A>D>D++>F
+					  
+					  
+
+2.) Numerical = Data type which consists of the quantitative data i.e data that deals with numbers .
+
+		Numerical data consists of 2 data types:
+		1.)Discrete
+		2.)Continuous
+		
+		1)Discrete : It has the data that contains exact values . 
+					 eg. grade of children , size of the shoes etc.
+					 It contains the exact values which dont flucktuate !
+					 
+		2)Continuous: Continuous Data represents measurements and therefore their values can’t be counted but they can be 	
+					   measured. 
+					  An example would be the height of a person, which you can describe by using intervals on the real number line.
+					  
+					  
+					  
+					  
+
+
+=> Datatypes are an important concept because statistical methods can only be used with certain data types. 
+   You have to analyze continuous data differently than categorical data otherwise it would result in a wrong analysis. 
+   Therefore knowing the types of data you are dealing with, enables you to choose the correct method of analysis.
+   
+   
+   
+=>  Statistical Methods :
+
+1) Nominal Data:
+	When you are dealing with nominal data, you collect information through:
+		
+		Frequencies: The Frequency is the rate at which something occurs over a period of time or within a dataset.
+		
+		Proportion: You can easily calculate the proportion by dividing the frequency by the total number of events. (e.g how often something happened divided by how often it could happen)
+
+		Percentage.
+	
+	Visualisation Methods: To visualise nominal data you can use a pie chart or a bar chart.
+
+	In Data Science, you can use one hot encoding, to transform nominal data into a numeric feature.
+
+2) Ordinal Data :
+	
+	When you are dealing with ordinal data, you can use the same methods like with nominal data, but you also have access to some additional tools.
+	Therefore you can summarise your ordinal data with frequencies, proportions, percentages. And you can visualise it with pie and bar charts. Additionally, you can use percentiles, median, mode and the interquartile range to summarise your data.
+	
+	In Data Science, you can use one label encoding, to transform ordinal data into a numeric feature.
+
+
+3) Continuous Data:
+	When you are dealing with continuous data, you can use the most methods to describe your data. 
+	You can summarise your data using percentiles, median, interquartile range, mean, mode, standard deviation, and range.
+
+	
+	Visualisation Methods:
+	To visualise continuous data, you can use a histogram or a box-plot. With a histogram, you can check the central tendency, variability, modality, and kurtosis of a distribution. Note that a histogram can’t show you if you have any outliers. This is why we also use box-plots.

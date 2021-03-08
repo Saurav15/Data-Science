@@ -1,0 +1,121 @@
+Data Cleaning: 
+Source :- https://www.kaggle.com/sauravmaherchandani/data-cleaning-challenge-handling-missing-values/edit
+
+
+
+DAY 1 : Today, we're going to be looking at how to deal with MISSING VALUES.
+		
+		Step 1 : Look at the data .
+				 
+				 First import all the libraries. 
+				 Then read the data and save it in a variable .# pd.read_csv
+				 Then take a look at the data. # df.head()
+		
+		Step 2 : Look how many missing values we have . 
+				 
+				 First count the number of missing values . # df_null_values = df.isnull().sum()
+				 
+				 We might be able to get more insight if we look at the percentage of missing values.
+				 # df_null_percent = ( df_null_values/df.shape[0] )*100 
+				 # Here shape[0] represents the number of rows 
+				 
+		Step 3 : Figure out why the data is missing. **Is this value missing becuase it wasn't recorded or becuase it dosen't 
+				 exist?** 
+		
+		Step 4 : Drop missing values. If you're in a hurry or don't have a reason to figure out why your values are missing, one 
+				 option you have is to just remove any rows or columns that contain missing values. 
+				 # df_remove_all_null_rows = df.dropna() # Chech the data now df_remove_all_null_rows.shape
+				 # df_remove_all_null_columns = df.dropna(axis=1)  # check the data df_remove_all_null_columns.shape
+				
+		Step 5 : Filling in missing values automatically .
+				 Fill all the Null values to 0 . # df.fillna(0)
+				 This may bring our data bias ! So what we can do rather is :
+				 Replace all NA's the value that comes directly after it in the same column
+				 and then replace all the reamining na's with 0 .
+				 
+				 
+				 
+
+
+Day 2 :  Normalization vs Standardization : 		Min-Max scaling is explained good . also other stuff !!
+		 https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/
+
+		Today, we're going to be looking at how to SCALE and NORMALIZE data (and what the difference is between the two!).
+		 The difference is that, in scaling, you're changing the range of your data while in normalization you're changing the shape of the distribution of your data.
+		 
+		 1. Scaling :
+			Min-max scaling , is the simplest method and consists in rescaling the range of features to scale the range in [0, 1] or [−1, 1]. Selecting the target range depends on the nature of the data.
+			
+			Min-Max Scaler:
+			It essentially shrinks the range such that the range is now between 0 and 1 (or -1 to 1 if there are negative values).
+			
+			A distplot plots a univariate distribution of observations.
+			
+			
+			Code :
+			# generate 1000 data points randomly drawn from an exponential distribution 
+			original_data = np.random.exponential(size = 1000) # This is the data 
+
+			# mix-max scale the data between 0 and 1
+			scaled_data = minmax_scaling(original_data, columns = [0])
+
+			# plot both together to compare
+			fig, ax=plt.subplots(1,2)
+			sns.distplot(original_data, ax=ax[0])
+			ax[0].set_title("Original Data")
+			sns.distplot(scaled_data, ax=ax[1])
+			ax[1].set_title("Scaled data")
+			
+			NOTE : Scaling just changw the range of the data ! It doesnt change the distribution of the data i.e graph doesnt change.
+		
+		2. Normalization :
+			Scaling just changes the range of your data. Normalization is a more radical transformation. The point of normalization is to change your observations so that they can be described as a normal distribution.
+
+			Normal distribution: Also known as the "bell curve", this is a specific statistical distribution where a roughly equal observations fall above and below the mean, the mean and the median are the same, and there are more observations closer to the mean. The normal distribution is also known as the Gaussian distribution.	
+			
+			In general, you'll only want to normalize your data if you're going to be using a machine learning or statistics technique that assumes your data is normally distributed. Some examples of these include t-tests, ANOVAs, linear regression, linear discriminant analysis (LDA) and Gaussian naive Bayes. (Pro tip: any method with "Gaussian" in the name probably assumes normality.)
+			
+			The method were using to normalize here is called the Box-Cox Transformation.
+			
+			# # normalize the exponential data with boxcox
+			normalized_data = stats.boxcox(original_data)
+			
+			
+			
+			Why did we use boxcox method ? Can any graph be transformed into bell curve ? 
+			https://machinelearningmastery.com/how-to-transform-data-to-fit-the-normal-distribution/
+			This article explains it well.
+			
+			
+	
+	
+
+
+Day 3:   Today, we're going to work with dates.
+
+		Step 1 : When we see any Date column in our dataset  first check the data Type of the date column.
+				#print(df.Date.dtype) ...... out:Object
+				
+				dtype = Object shows us that the date stored here are in the form of Strings.
+				
+				
+		Step 2 :  But pandas also contains a special data types to deal with date-time i.e pandas datetime data type.
+				  This is what we called parsing of dates.
+				  
+				  # create a new column, date_parsed, with the parsed dates
+					df['date_parsed'] = pd.to_datetime(df['date'], format = "%m/%d/%y")
+
+						What if I run into an error with multiple date formats? While we're specifying the date format here, sometimes you'll run into an error when there are multiple date formats in a single column. If that happens, you have have pandas try to infer what the right date format should be. You can do that like so:
+						#landslides['date_parsed'] = pd.to_datetime(landslides['Date'], infer_datetime_format=True)
+
+						Why don't you always use infer_datetime_format = True? There are two big reasons not to always have pandas guess the time format. The first is that pandas won't always been able to figure out the correct date format, especially if someone has gotten creative with data entry. The second is that it's much slower than specifying the exact format of the dates.
+					
+		
+		
+		Step 3 :  Now we are ready ro play with the dates. 
+					
+					Select just the day of the month from our column :
+					#df['date_parsed'].dt.day
+					
+		Step 4 : We can perform various operation on a feature with dtype:datetime64.
+				Same as dt.day there are many more ... We can see them by pressing TAB or visiting pandas Documentation.

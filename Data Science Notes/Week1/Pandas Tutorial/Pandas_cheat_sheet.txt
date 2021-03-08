@@ -1,0 +1,103 @@
+1. import pandas as pd
+2. var = pd.read_table("http://www.dfvfv.com")
+3. if not TAB saperated : var = pd.read_table("http://www.dfvfv.com" , sep = "|" )
+4. if comma seprated : var = pd.read_table("http://www.dfvfv.com" , sep = "," ) OR var = pd.read_csv("http://www.dfvfv.com")
+	csv = comma separated values
+
+5. var.head(n) & var.tail(n)
+6. if no header : header = none and to placce own columns : column = columns_list 
+
+# selecting a pandas seris
+1. type(var)
+2. var['City'] // prints city column 
+3. var['City','State'] // prints both columns
+4. var.City & var.State // also possible if no space in column names
+5. var['location'] = var.City + "," + var.State // creates new column name location
+
+# renaming columns :
+1. var.columns // prints column names 
+2. var.rename( {'City':'afd' , 'State':'asd'} ,axis=1, inplace = True) // uses dic. to konw what and with which to replace
+3. var.columns.str.replace("_" , " ") // to replace _ with " " so we can use it easily with dot operator like var.something
+
+
+# removing columns : 
+1. var.columns // gives column names 
+2. var.drop('City' , axis=1 ,inplace = true)  // axis=1 says its a column not a row that we need to drop 
+3. var.drop(['City','State'] ,axis=1 , inplace= true ) // For multiple column drop
+
+
+# removing rows
+1. var.drop([0,3],axis=0,inplace=True ) // 0th and 3rd row is droped
+
+
+# sorting seris :
+1. var.City.sort_values()
+2. var['City','State'].sort_values()
+3. var.State.sort_values( acending = False ) // to sort in decending
+4. var.sort_values(['City' , 'State']) // also possible
+
+
+# filtering rows : 
+1.  Using standers for loop and True-False list : 
+	tf = []
+	for i in var
+		if var.City == 'Ahmedabad' :
+			tf.append('True')
+		else:
+			tf.append('False')
+		
+	print(tf) // prints list of true and false 
+	
+	var[tf] // prints all the roes where the values in list is true
+	
+2. tf = var.City == 'Ahmedabad' 
+   var[tf]   // gives same result
+   
+3. var( var.City == 'Ahmedabad' ) // Easier method , Gives same result
+
+4. var[var.City == 'Ahmedabad'].State // Gives perticular column not whole table  
+
+5. Among all above best way is : 
+	var.loc[ var.City == 'Ahmedabad' ,['City' , 'State'] ] 
+	
+
+
+# applying multiple filter criteria : 
+1. movies[(movies.duration >200) & (movies.genre == 'Adventure')]['City','State']  
+2. var.loc[ var.city=='Ahmedabad' & var.State == 'Gujarat' , ['City] ]
+3. movies.loc[ (movies.duration >200) & (movies.genre=='Drama'), 'genre']
+4. movies.loc[ (movies.duration >200) | (movies.genre=='Drama'), 'genre']
+  
+
+
+# using strings :
+1. var.City.str.upper()
+2. vat.State.str.contains('Gujarat')
+3. var.City.str.replace('G' ,'g')
+
+
+# changing data type of pandas seris : 
+1. var.dtypes
+2. var.City.astype('float')
+
+
+
+# using Group by :
+1. var.groupby('City')
+// Finding something useful from a group
+2. var.groupby('City').no_mens.mean() // finds the avg of mens in every city
+
+
+
+# handaling missing values :
+1. var.isnull() // gives T-F as a table -- if no value-T else -False
+2. var.notnull() // same but opposite
+3. var.isnull().sum() // gives no. of empty values in each column
+4. var[ var.City.isnull() ] // gives all the rows where city is null
+// Now how to find and drop the null rows: 
+5. var.dropna(how='any') // any row with any null value of any column is dropped
+6. var.dropna(subset=['City','State'] , how='any') // if any of two are null
+7. var.dropna(subset=['City','State'] ,how='all')  // all should be null to drop the row
+8. var['State'].fillna(value='Gujarat',inplace=True)//  replace all the NaN by a specific Shape !
+
+

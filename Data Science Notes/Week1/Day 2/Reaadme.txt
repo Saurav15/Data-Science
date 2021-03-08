@@ -1,0 +1,16 @@
+This is the week2 from Data science summer camp
+
+Here is one Python file where we have lernt to use pandas.
+like Intro to pandas
+
+The week 2 folder also contain the Data file which we can directly import in pandas instead of hard coding data
+
+
+
+
+Prac -Contains all the explaination
+File - conatins the data that we have to deal with
+Jup_prac - all the code written and executed each line one by one 
+Foo - after doing all the manipulation with data , the new data is saved in this file !
+
+To run Jup file first start Juypter and then open it from there!

@@ -1,5 +1,5 @@
 # Data-Science
-Here i have practiced and learnt data science.
+Here i have practiced and learned data science.
 
 
 # Math Notes which include Stats and Probablity are uploaded on drive :
